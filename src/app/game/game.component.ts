@@ -37,4 +37,10 @@ export class GameComponent {
     this.lossCount++;
     return 'You lose!';
   }
+
+  clearCounters(): void {
+    this.winCount = 0;
+    this.lossCount = 0;
+    this.tieCount = 0;
+  }
 }
