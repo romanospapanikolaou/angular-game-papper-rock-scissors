@@ -11,6 +11,10 @@ export class GameComponent {
   computerChoice: string = '';
   result: string = '';
 
+  winCount: number = 0;
+  lossCount: number = 0;
+  tieCount: number = 0;
+
   play(choice: string): void {
     this.playerChoice = choice;
     this.computerChoice = this.choices[Math.floor(Math.random() * 3)];
@@ -19,6 +23,7 @@ export class GameComponent {
 
   determineWinner(player: string, computer: string): string {
     if (player === computer) {
+      this.tieCount++;
       return "It's a tie!";
     }
     if (
@@ -26,8 +31,10 @@ export class GameComponent {
       (player === 'Paper' && computer === 'Rock') ||
       (player === 'Scissors' && computer === 'Paper')
     ) {
+      this.winCount++;
       return 'You win!';
     }
+    this.lossCount++;
     return 'You lose!';
   }
 }
